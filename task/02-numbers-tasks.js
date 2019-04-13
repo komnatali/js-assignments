@@ -54,13 +54,7 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
- let a = value1;
-let b = value2;
-// return (a / 2) + (b / 2) + (((a % 2) + (b % 2)) / 2);
-
-try { return (a + b)/2}
-catch { return (a / 2) + (b / 2) + (((a % 2) + (b % 2)) / 2); }
-
+    return value1 / 2 + value2 / 2;
 }
 
 /**
