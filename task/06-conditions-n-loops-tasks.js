@@ -30,7 +30,10 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    if (num % 3 == 0 && num % 5 == 0) return "FizzBuzz";
+    if (num % 3 == 0) return "Fizz";
+    if (num % 5 == 0) return "Buzz";
+    return num;
 }
 
 
@@ -46,7 +49,8 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    if (n == 1) return n;
+    else return getFactorial(n - 1) * n;
 }
 
 
@@ -63,7 +67,11 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    let sum = 0;
+    for (let i=n1; i <= n2; i++) {
+        sum += i;
+    }
+    return sum;
 }
 
 
@@ -82,7 +90,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+    return (a + b > c && a + c > b && b + c > a);
 }
 
 
@@ -166,7 +174,10 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+    for (let i = 0; i < str.length; i++) {
+        if (str.indexOf(str[i]) === i && str.indexOf(str[i], i + 1) == -1 ) return str[i];
+    }
+    return null;
 }
 
 
@@ -192,7 +203,14 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    let res = "";
+    let start = a > b ? b : a;
+    let end = a > b ? a : b;
+    res+= isStartIncluded === true ? '[' : '(';
+    res = res + start + ', ' + end;
+    res+= isEndIncluded === true ? ']' : ')';
+
+    return res;
 }
 
 
@@ -209,7 +227,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    return str.split("").reverse().join("");
 }
 
 
@@ -226,7 +244,10 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    return +num.toString()
+    .split("")
+    .reverse()
+    .join("");
 }
 
 
@@ -270,7 +291,14 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    function getSum(n) {
+        return +n.toString()
+        .split("")
+        .reduce((sum, cur) => {return sum + (+cur)}, 0);
+    }
+
+    if (num < 10) return num;
+    else return getDigitalRoot(getSum(num));
 }
 
 
@@ -431,7 +459,16 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-    throw new Error('Not implemented');
+    let a = position;
+    if (a[0][0] && a[0][0] === a[1][1] && a[0][0] === a[2][2]) return a[0][0];
+    if (a[0][2] && a[0][2] === a[1][1] && a[0][2] === a[2][0]) return a[0][2];
+
+    for (let i = 0; i < 3; i++) {
+        if (a[i][1] && a[i][1] === a[i][0] && a[i][1] === a[i][2]) return a[i][0];
+        if (a[1][i] && a[1][i] === a[0][i] && a[1][i] === a[2][i]) return a[1][i];       
+    }
+    return undefined;
+
 }
 
 
