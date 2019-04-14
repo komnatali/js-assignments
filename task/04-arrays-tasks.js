@@ -274,10 +274,12 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-   // return arr.map((elem, i) => 
-
-   //    )
-   throw new Error('Not implemented');
+   let newArr = [];
+   arr.map((elem, i) => {
+      let smallArr = new Array(i + 1).fill(elem);
+      newArr = newArr.concat(smallArr);
+   })
+   return newArr;
 }
 
 
@@ -431,12 +433,11 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   throw new Error('Not implemented');
-   let arr2 = arr.sort((a,b) => {
-      if (a.country === b.country) return a.city - b.city;
-      return a.country - b.country;
+   
+   return arr.sort((a,b) => {
+      if (a.country === b.country) return  a.city > b.city ? 1 : -1;
+      return a.country > b.country ? 1 : -1;
    })
-   return arr2;
    
 }
 
@@ -459,7 +460,13 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-   throw new Error('Not implemented');
+   let matrix = (new Array(n).fill(0));
+   return matrix.map((row, i) => {
+      let newRow = (new Array(n).fill(0));
+      newRow[i] = 1;
+      return newRow;
+   })
+
 }
 
 /**
@@ -526,7 +533,18 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-   throw new Error('Not implemented');
+   let map = new Map();
+   array.map(row => {
+
+      let curCountryName = keySelector(row);
+      let curCity = valueSelector(row);
+
+      if ( !map.has(curCountryName) ) map.set(curCountryName, [curCity]);
+      else
+         map.get(curCountryName).push(curCity);
+      
+   })
+   return map;
 }
 
 
@@ -542,7 +560,9 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-    throw new Error('Not implemented');
+   var res = [];
+   arr.map(childrenSelector).map(el => res = res.concat(el));
+   return res;
 }
 
 
@@ -559,7 +579,7 @@ function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 function getElementByIndexes(arr, indexes) {
-   throw new Error('Not implemented');
+   return indexes.reduce((newArr, index) =>{return newArr[index]}, arr);
 }
 
 

@@ -406,9 +406,7 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-    let new = pathes.map(elem => elem.split(""));
-    let common = "";
-    for (let i = 0; i < pathes.)
+    throw new Error('Not implemented');
 }
 
 
