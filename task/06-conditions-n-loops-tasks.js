@@ -272,7 +272,12 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-    throw new Error('Not implemented');
+    return ccn.toString()
+    .split("")
+    .reverse()
+    .map((el, i) => (i % 2 == 1) ? +el * 2 : +el)
+    .map(el => el > 9 ? (el % 10) + 1 : el )
+    .reduce((sum, cur) => sum + cur) % 10 == 0;
 }
 
 
@@ -401,7 +406,9 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-    throw new Error('Not implemented');
+    let new = pathes.map(elem => elem.split(""));
+    let common = "";
+    for (let i = 0; i < pathes.)
 }
 
 
