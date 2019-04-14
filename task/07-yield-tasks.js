@@ -49,14 +49,24 @@ function* get99BottlesOfBeer() {
 /**
  * Returns the Fibonacci sequence:
  *   0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, ...
- *
+ *   a  b  
  * See more at: https://en.wikipedia.org/wiki/Fibonacci_number
  *
  * @return {Iterable.<number>}
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+    let a = 0; 
+    let b = 1;
+    yield a;
+    yield b;
+    while (true) {
+        let temp = a;
+        a = b;
+        b = a + temp;
+        yield b;
+    }
+    
 }
 
 
@@ -135,7 +145,39 @@ function* breadthTraversalTree(root) {
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
 function* mergeSortedSequences(source1, source2) {
-    throw new Error('Not implemented');
+    let source11 = source1();
+    let source22 = source2();
+    let s1 = source11.next();
+    let s2 = source22.next();
+
+    while (!s1.done || !s2.done) {
+        let temp;
+        if (!s1.done && !s2.done) {
+            
+            if  (s1.value < s2.value) {
+                temp = s1.value;
+                s1 = source11.next();
+            }
+            else {
+                temp = s2.value;
+                s2 = source22.next();
+            }
+        }
+
+        else {
+        
+            if (!s1.done) {
+                temp = s1.value;
+                s1 = source11.next();
+            } else 
+            if (!s2.done) {
+                temp = s2.value;
+                s2 = source22.next();
+            }
+        }
+    
+        yield temp;
+    }
 }
 
 

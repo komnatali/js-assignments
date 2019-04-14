@@ -34,7 +34,7 @@
  *
  */
 function parseBankAccount(bankAccount) {
-    throw new Error('Not implemented');
+
 }
 
 
@@ -52,7 +52,7 @@ function parseBankAccount(bankAccount) {
  *                                                                                                'is a constructor for',
  *                                                                                                'strings, or a sequence of',
  *                                                                                                'characters.'
- *
+ *          |
  *  'The String global object is a constructor for strings, or a sequence of characters.', 12 =>  'The String',
  *                                                                                                'global',
  *                                                                                                'object is a',
@@ -64,6 +64,13 @@ function parseBankAccount(bankAccount) {
  */
 function* wrapText(text, columns) {
     throw new Error('Not implemented');
+    // let res = "";
+    // let count = 0;
+    // while (let i = 0 != text.length - 1) {
+    //     while (count <= columns) {
+            
+    //     }
+    // }
 }
 
 
@@ -101,6 +108,19 @@ const PokerRank = {
 
 function getPokerHandRank(hand) {
     throw new Error('Not implemented');
+    // function StraightFlush(sortedHand) {
+    //     let suit = a[0][1];
+    //     for (let i = 0; i < 6; i+=2) {
+    //         if (a[i])
+    //     }
+    //     sortedHand.every(el => el[1] == suit;)
+    // }
+    // let handStr = hand.join("");
+    // let sortedHand = hand.sort();
+    
+    // sortedHand.
+
+    // return handStr;
 }
 
 
